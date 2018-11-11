@@ -38,21 +38,262 @@ public class EloSystemFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        mainLabel = new javax.swing.JLabel();
+        scoreLabel = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        player1ScoreTextField = new javax.swing.JTextArea();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        player2ScoreTextField = new javax.swing.JTextArea();
+        jLabel3 = new javax.swing.JLabel();
+        jPanelPlayer1 = new javax.swing.JPanel();
+        firstNicknameLabel = new javax.swing.JLabel();
+        firstNameLabel = new javax.swing.JLabel();
+        player1Label = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        player1NicknameTextField = new javax.swing.JTextArea();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        player1NameTextField = new javax.swing.JTextArea();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        player1SurNameTextField = new javax.swing.JTextArea();
+        firstSurNameLabel = new javax.swing.JLabel();
+        jPanelPlayer2 = new javax.swing.JPanel();
+        secondNicknameLabel = new javax.swing.JLabel();
+        secondNameLabel = new javax.swing.JLabel();
+        player2Label = new javax.swing.JLabel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        player2NicknameTextField = new javax.swing.JTextArea();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        player2NameTextField = new javax.swing.JTextArea();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        player2SurNameTextField = new javax.swing.JTextArea();
+        secondSurNameLabel = new javax.swing.JLabel();
+        backButton = new javax.swing.JButton();
+        addGameButton = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(800, 500));
+        setMinimumSize(new java.awt.Dimension(800, 500));
+        setPreferredSize(new java.awt.Dimension(800, 500));
+        setResizable(false);
+        setSize(new java.awt.Dimension(800, 500));
+
+        mainLabel.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
+        mainLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        mainLabel.setText("Add game");
+
+        scoreLabel.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
+        scoreLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        scoreLabel.setText("Счёт");
+
+        player1ScoreTextField.setColumns(20);
+        player1ScoreTextField.setRows(5);
+        jScrollPane1.setViewportView(player1ScoreTextField);
+
+        player2ScoreTextField.setColumns(20);
+        player2ScoreTextField.setRows(5);
+        jScrollPane2.setViewportView(player2ScoreTextField);
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText(":");
+
+        firstNicknameLabel.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
+        firstNicknameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        firstNicknameLabel.setText("Никнейм");
+
+        firstNameLabel.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
+        firstNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        firstNameLabel.setText("Имя");
+
+        player1Label.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
+        player1Label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        player1Label.setText("Player 1");
+
+        player1NicknameTextField.setColumns(20);
+        player1NicknameTextField.setRows(5);
+        jScrollPane3.setViewportView(player1NicknameTextField);
+
+        player1NameTextField.setColumns(20);
+        player1NameTextField.setRows(5);
+        jScrollPane4.setViewportView(player1NameTextField);
+
+        player1SurNameTextField.setColumns(20);
+        player1SurNameTextField.setRows(5);
+        jScrollPane5.setViewportView(player1SurNameTextField);
+
+        firstSurNameLabel.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
+        firstSurNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        firstSurNameLabel.setText("Фамилия");
+
+        javax.swing.GroupLayout jPanelPlayer1Layout = new javax.swing.GroupLayout(jPanelPlayer1);
+        jPanelPlayer1.setLayout(jPanelPlayer1Layout);
+        jPanelPlayer1Layout.setHorizontalGroup(
+            jPanelPlayer1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelPlayer1Layout.createSequentialGroup()
+                .addGroup(jPanelPlayer1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(firstSurNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(firstNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(firstNicknameLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addGroup(jPanelPlayer1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(player1Label)))
+        );
+        jPanelPlayer1Layout.setVerticalGroup(
+            jPanelPlayer1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelPlayer1Layout.createSequentialGroup()
+                .addComponent(player1Label)
+                .addGap(31, 31, 31)
+                .addGroup(jPanelPlayer1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelPlayer1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanelPlayer1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(firstNameLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanelPlayer1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(firstSurNameLabel)))
+                    .addComponent(firstNicknameLabel)))
+        );
+
+        secondNicknameLabel.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
+        secondNicknameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        secondNicknameLabel.setText("Никнейм");
+
+        secondNameLabel.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
+        secondNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        secondNameLabel.setText("Имя");
+
+        player2Label.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
+        player2Label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        player2Label.setText("Player 2");
+
+        player2NicknameTextField.setColumns(20);
+        player2NicknameTextField.setRows(5);
+        jScrollPane6.setViewportView(player2NicknameTextField);
+
+        player2NameTextField.setColumns(20);
+        player2NameTextField.setRows(5);
+        jScrollPane7.setViewportView(player2NameTextField);
+
+        player2SurNameTextField.setColumns(20);
+        player2SurNameTextField.setRows(5);
+        jScrollPane8.setViewportView(player2SurNameTextField);
+
+        secondSurNameLabel.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
+        secondSurNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        secondSurNameLabel.setText("Фамилия");
+
+        javax.swing.GroupLayout jPanelPlayer2Layout = new javax.swing.GroupLayout(jPanelPlayer2);
+        jPanelPlayer2.setLayout(jPanelPlayer2Layout);
+        jPanelPlayer2Layout.setHorizontalGroup(
+            jPanelPlayer2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelPlayer2Layout.createSequentialGroup()
+                .addGroup(jPanelPlayer2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(secondSurNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(secondNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(secondNicknameLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addGroup(jPanelPlayer2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(player2Label)))
+        );
+        jPanelPlayer2Layout.setVerticalGroup(
+            jPanelPlayer2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelPlayer2Layout.createSequentialGroup()
+                .addComponent(player2Label)
+                .addGap(31, 31, 31)
+                .addGroup(jPanelPlayer2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelPlayer2Layout.createSequentialGroup()
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanelPlayer2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(secondNameLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanelPlayer2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(secondSurNameLabel)))
+                    .addComponent(secondNicknameLabel)))
+        );
+
+        backButton.setText("Назад");
+
+        addGameButton.setText("Добавить игру");
+        addGameButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addGameButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(mainLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 88, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jPanelPlayer1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(scoreLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jPanelPlayer2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(87, 87, 87))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(addGameButton, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(294, 294, 294))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(mainLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(55, 55, 55)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanelPlayer1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanelPlayer2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(43, 43, 43)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(scoreLabel)
+                        .addGap(23, 23, 23))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addComponent(addGameButton)
+                .addGap(27, 27, 27)
+                .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void addGameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addGameButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addGameButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -90,5 +331,36 @@ public class EloSystemFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addGameButton;
+    private javax.swing.JButton backButton;
+    private javax.swing.JLabel firstNameLabel;
+    private javax.swing.JLabel firstNicknameLabel;
+    private javax.swing.JLabel firstSurNameLabel;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanelPlayer1;
+    private javax.swing.JPanel jPanelPlayer2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JLabel mainLabel;
+    private javax.swing.JLabel player1Label;
+    private javax.swing.JTextArea player1NameTextField;
+    private javax.swing.JTextArea player1NicknameTextField;
+    private javax.swing.JTextArea player1ScoreTextField;
+    private javax.swing.JTextArea player1SurNameTextField;
+    private javax.swing.JLabel player2Label;
+    private javax.swing.JTextArea player2NameTextField;
+    private javax.swing.JTextArea player2NicknameTextField;
+    private javax.swing.JTextArea player2ScoreTextField;
+    private javax.swing.JTextArea player2SurNameTextField;
+    private javax.swing.JLabel scoreLabel;
+    private javax.swing.JLabel secondNameLabel;
+    private javax.swing.JLabel secondNicknameLabel;
+    private javax.swing.JLabel secondSurNameLabel;
     // End of variables declaration//GEN-END:variables
 }
