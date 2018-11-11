@@ -19,6 +19,7 @@ public class Game implements Serializable {
     private final Player PLAYER2;
     private final Date gameDate;
     private final boolean isOfficial;
+    private final Player WINNER;
 
     public Game(Player player1, Player player2, Pair<Integer, Integer> score, boolean official) {
         this.PLAYER1 = player1;
@@ -26,6 +27,24 @@ public class Game implements Serializable {
         this.SCORE = score;
         this.gameDate = new Date();
         this.isOfficial = official;
+        this.WINNER = explainResult();
+    }
+
+    /**
+     * Method to understand who of players won the game.
+     * @return 
+     */
+    private Player explainResult() {
+        Integer firstScore = SCORE.getFirstObject();
+        Integer secondScore = SCORE.getSecondObject();
+        if (firstScore > secondScore) {
+            return PLAYER1;
+        } else if (firstScore < secondScore) {
+            return PLAYER2;
+        } else {
+            // Here could be draw
+            throw new IllegalStateException("There is no draw in this game");
+        }
     }
 
     /**
@@ -61,6 +80,13 @@ public class Game implements Serializable {
      */
     public boolean isOfficial() {
         return isOfficial;
+    }
+
+    /**
+     * @return the WINNER
+     */
+    public Player getWINNER() {
+        return WINNER;
     }
 
 }
