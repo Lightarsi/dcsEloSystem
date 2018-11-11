@@ -16,6 +16,12 @@
  */
 package GUI;
 
+import elosystem.EloSystem;
+import elosystem.Exceptions.NoPlayerFoundException;
+import elosystem.Log;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Lightars
@@ -69,6 +75,7 @@ public class EloSystemFrame extends javax.swing.JFrame {
         secondSurNameLabel = new javax.swing.JLabel();
         backButton = new javax.swing.JButton();
         addGameButton = new javax.swing.JButton();
+        isOfficialCheckBox = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(800, 500));
@@ -232,6 +239,8 @@ public class EloSystemFrame extends javax.swing.JFrame {
             }
         });
 
+        isOfficialCheckBox.setText("Is official match");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -262,7 +271,9 @@ public class EloSystemFrame extends javax.swing.JFrame {
                                 .addGap(87, 87, 87))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(addGameButton, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(294, 294, 294))))))
+                                .addGap(18, 18, 18)
+                                .addComponent(isOfficialCheckBox)
+                                .addGap(195, 195, 195))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -282,7 +293,9 @@ public class EloSystemFrame extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                .addComponent(addGameButton)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addGameButton)
+                    .addComponent(isOfficialCheckBox))
                 .addGap(27, 27, 27)
                 .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -292,7 +305,24 @@ public class EloSystemFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addGameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addGameButtonActionPerformed
-        // TODO add your handling code here:
+        EloSystem elo = EloSystem.getEloSystem();
+        String player1Nickname = player1NameTextField.getText();
+        String player2Nickname = player2NameTextField.getText();
+        String player1Name = player1NameTextField.getText();
+        String player2Name = player2NameTextField.getText();
+        String player1Surname = player1SurNameTextField.getText();
+        String player2Surname = player2SurNameTextField.getText();
+        String player1Score = player1ScoreTextField.getText();
+        String player2Score = player2ScoreTextField.getText();
+        boolean isOfficial = isOfficialCheckBox.isSelected();
+        if((player1Nickname != null) && (player2Nickname != null)) {
+            try {
+                elo.addGame(player1Name, player2Name, Integer.valueOf(player1Score),
+                        Integer.valueOf(player2Score), isOfficial);
+            } catch (NoPlayerFoundException ex) {
+                Log.log("There is no player with that name.");
+            }
+        }
     }//GEN-LAST:event_addGameButtonActionPerformed
 
     /**
@@ -336,6 +366,7 @@ public class EloSystemFrame extends javax.swing.JFrame {
     private javax.swing.JLabel firstNameLabel;
     private javax.swing.JLabel firstNicknameLabel;
     private javax.swing.JLabel firstSurNameLabel;
+    private javax.swing.JCheckBox isOfficialCheckBox;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanelPlayer1;
     private javax.swing.JPanel jPanelPlayer2;

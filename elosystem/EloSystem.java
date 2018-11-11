@@ -31,6 +31,8 @@ import java.nio.channels.OverlappingFileLockException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -50,9 +52,25 @@ public class EloSystem implements Serializable {
 
     public static EloSystem getEloSystem() {
         if (eloSystem == null) {
-            eloSystem = new EloSystem();
+            eloSystem = tryDeserializeEloSystem();
+            if(eloSystem == null) {
+                eloSystem = new EloSystem();
+            }
         }
         return eloSystem;
+    }
+
+    private static EloSystem tryDeserializeEloSystem() {
+        try {
+            EloSystem elo = (EloSystem) deserializeObject(getEloSystemFile().getAbsolutePath());
+            return elo;
+        } catch (IOException ex) {
+            Log.log("There is no elo file");
+            return null;
+        } catch (ClassNotFoundException ex) {
+            Log.log("Serialization is broken");
+            return null;
+        }
     }
 
     public void addGame(String player1Name, String player2Name, int scoreOfPlayer1,
@@ -84,8 +102,8 @@ public class EloSystem implements Serializable {
     }
 
     /**
-     * Method to add this game to the list of games and to both players.
-     * Each player process game by himself.
+     * Method to add this game to the list of games and to both players. Each
+     * player process game by himself.
      *
      * @param player1
      * @param player2
@@ -194,7 +212,7 @@ public class EloSystem implements Serializable {
     /**
      * Method to serialize any object.
      */
-    private void serializeObject(String pathWhereSerialize, Object objectToSerialize) throws IOException {
+    private static void serializeObject(String pathWhereSerialize, Object objectToSerialize) throws IOException {
         ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(pathWhereSerialize));
         out.writeObject(objectToSerialize);
     }
@@ -202,7 +220,7 @@ public class EloSystem implements Serializable {
     /**
      * Method to deserialize any object. Use (objectType) object.
      */
-    private Object deserializeObject(String pathFromDeserialize) throws IOException, ClassNotFoundException {
+    private static Object deserializeObject(String pathFromDeserialize) throws IOException, ClassNotFoundException {
         ObjectInputStream in = new ObjectInputStream(new FileInputStream(pathFromDeserialize));
         return in.readObject();
     }

@@ -67,7 +67,9 @@
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="addGameButton" min="-2" pref="189" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="294" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="isOfficialCheckBox" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="195" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -96,7 +98,10 @@
                   <Component id="jLabel3" alignment="1" min="-2" pref="66" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="32" max="32767" attributes="0"/>
-              <Component id="addGameButton" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="addGameButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="isOfficialCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Component id="backButton" min="-2" pref="50" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
@@ -434,6 +439,11 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addGameButtonActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="isOfficialCheckBox">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Is official match"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
