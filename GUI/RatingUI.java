@@ -48,8 +48,8 @@ public class RatingUI extends javax.swing.JFrame {
         for (Player player : playersList) {
             model.addElement(player.getName() + " " + player.getSurname() + " official rating: "
                     + player.getOfficialRating() + " games total: " + String.valueOf(player.getGamesTotal()));
-            Log.log(player.getName() + " " + player.getSurname() + " official rating: "
-                   + player.getOfficialRating() + " games total: " + String.valueOf(player.getGamesTotal()));
+            //Log.log(player.getName() + " " + player.getSurname() + " official rating: "
+            //       + player.getOfficialRating() + " games total: " + String.valueOf(player.getGamesTotal()));
         }
     }
 

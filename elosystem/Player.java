@@ -81,7 +81,10 @@ public class Player implements Serializable {
             R1 = this.getHidedRating();
             R2 = anotherPlayer.getHidedRating();
         }
-        double expectedValue = 1 / (1 + Math.pow(10, (R2 - R1) / 400));
+        //Log.log("R1: " + String.valueOf(R1));
+        //Log.log("R2: " + String.valueOf(R2));
+        double expectedValue = 1.0 / (1.0 + Math.pow(10.0, (double) (R2 - R1) / 400.0));
+        //Log.log(String.valueOf(expectedValue));
         return expectedValue;
     }
 
