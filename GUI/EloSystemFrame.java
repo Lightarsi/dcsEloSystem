@@ -19,8 +19,7 @@ package GUI;
 import elosystem.EloSystem;
 import elosystem.Exceptions.NoPlayerFoundException;
 import elosystem.Log;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import elosystem.Pair;
 
 /**
  *
@@ -83,26 +82,34 @@ public class EloSystemFrame extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(800, 500));
         setResizable(false);
         setSize(new java.awt.Dimension(800, 500));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         mainLabel.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
         mainLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         mainLabel.setText("Add game");
+        getContentPane().add(mainLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 50));
 
         scoreLabel.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
         scoreLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         scoreLabel.setText("Счёт");
+        getContentPane().add(scoreLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(103, 312, 150, -1));
 
         player1ScoreTextField.setColumns(20);
         player1ScoreTextField.setRows(5);
         jScrollPane1.setViewportView(player1ScoreTextField);
 
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(257, 293, -1, -1));
+
         player2ScoreTextField.setColumns(20);
         player2ScoreTextField.setRows(5);
         jScrollPane2.setViewportView(player2ScoreTextField);
 
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 293, -1, -1));
+
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText(":");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(367, 293, 79, 66));
 
         firstNicknameLabel.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
         firstNicknameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -167,6 +174,8 @@ public class EloSystemFrame extends javax.swing.JFrame {
                     .addComponent(firstNicknameLabel)))
         );
 
+        getContentPane().add(jPanelPlayer1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 105, -1, -1));
+
         secondNicknameLabel.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
         secondNicknameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         secondNicknameLabel.setText("Никнейм");
@@ -230,76 +239,29 @@ public class EloSystemFrame extends javax.swing.JFrame {
                     .addComponent(secondNicknameLabel)))
         );
 
-        backButton.setText("Назад");
+        getContentPane().add(jPanelPlayer2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 105, -1, -1));
 
+        backButton.setFont(new java.awt.Font("Meiryo UI", 0, 14)); // NOI18N
+        backButton.setText("Назад");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 400, 100, 50));
+
+        addGameButton.setFont(new java.awt.Font("Meiryo UI", 0, 14)); // NOI18N
         addGameButton.setText("Добавить игру");
         addGameButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addGameButtonActionPerformed(evt);
             }
         });
+        getContentPane().add(addGameButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(297, 389, 189, -1));
 
+        isOfficialCheckBox.setFont(new java.awt.Font("Meiryo UI", 0, 12)); // NOI18N
         isOfficialCheckBox.setText("Is official match");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 88, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jPanelPlayer1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(scoreLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jPanelPlayer2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(87, 87, 87))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(addGameButton, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(isOfficialCheckBox)
-                                .addGap(195, 195, 195))))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(mainLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanelPlayer1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanelPlayer2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(scoreLabel)
-                        .addGap(23, 23, 23))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addGameButton)
-                    .addComponent(isOfficialCheckBox))
-                .addGap(27, 27, 27)
-                .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        getContentPane().add(isOfficialCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(504, 389, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -317,48 +279,41 @@ public class EloSystemFrame extends javax.swing.JFrame {
         boolean isOfficial = isOfficialCheckBox.isSelected();
         if((player1Nickname != null) && (player2Nickname != null)) {
             try {
-                elo.addGame(player1Name, player2Name, Integer.valueOf(player1Score),
+                elo.addGame(player1Nickname, player2Nickname, Integer.valueOf(player1Score),
                         Integer.valueOf(player2Score), isOfficial);
             } catch (NoPlayerFoundException ex) {
                 Log.log("There is no player with that name.");
+                // bad decision tbh, but...
+                elo.createPlayer(player1Nickname, player1Name, player1Surname);
+                elo.createPlayer(player2Nickname, player2Name, player2Surname);
+                addGameButton.doClick();
+            }
+        } else {
+            try {
+                Pair<String, String> player1fi = new Pair<>(player1Name, player1Surname);
+                Pair<String, String> player2fi = new Pair<>(player2Name, player2Surname);
+                elo.addGame(player1fi, player2fi, Integer.valueOf(player1Score),
+                        Integer.valueOf(player2Score), isOfficial);
+            } catch (NoPlayerFoundException ex) {
+                Log.log("There is no player with that name.");
+                // bad decision tbh, but...
+                elo.createPlayer(player1Nickname, player1Name, player1Surname);
+                elo.createPlayer(player2Nickname, player2Name, player2Surname);
+                addGameButton.doClick();
             }
         }
     }//GEN-LAST:event_addGameButtonActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EloSystemFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EloSystemFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EloSystemFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EloSystemFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EloSystemFrame().setVisible(true);
+                new StarterForm().setVisible(true);
             }
         });
-    }
+        this.dispose();
+    }//GEN-LAST:event_backButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addGameButton;

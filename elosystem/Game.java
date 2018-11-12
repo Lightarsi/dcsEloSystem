@@ -40,6 +40,9 @@ public class Game implements Serializable {
         this.gameDate = new Date();
         this.isOfficial = official;
         this.WINNER = explainResult();
+        Log.log("Game added " + player1.getName() + " vs " + player2.getName()
+                + " score: " + score.getFirstObject().toString() + " : " +
+                score.getSecondObject().toString());
     }
 
     /**

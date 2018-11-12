@@ -17,6 +17,8 @@
 
 package elosystem;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author diivanov
@@ -24,6 +26,7 @@ package elosystem;
 public class Log {
     
     public static void log(String message) {
-        System.out.println(message);
+        //System.out.println(message);
+        JOptionPane.showMessageDialog(null, message);
     }
 }

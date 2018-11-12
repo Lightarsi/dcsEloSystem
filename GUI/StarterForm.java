@@ -16,6 +16,8 @@
  */
 package GUI;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author Lightars
@@ -57,9 +59,19 @@ public class StarterForm extends javax.swing.JFrame {
 
         EloButton.setFont(new java.awt.Font("Meiryo UI", 0, 14)); // NOI18N
         EloButton.setText("Starting Elo System");
+        EloButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EloButtonActionPerformed(evt);
+            }
+        });
 
         RatingButton.setFont(new java.awt.Font("Meiryo UI", 0, 14)); // NOI18N
         RatingButton.setText("Rating");
+        RatingButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RatingButtonActionPerformed(evt);
+            }
+        });
 
         InformationButton.setFont(new java.awt.Font("Meiryo UI", 0, 14)); // NOI18N
         InformationButton.setText("Information");
@@ -111,13 +123,37 @@ public class StarterForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void InformationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InformationButtonActionPerformed
-        // TODO add your handling code here:
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new InformationFrame().setVisible(true);
+            }
+        });
+        this.dispose();
     }//GEN-LAST:event_InformationButtonActionPerformed
 
     private void QuitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QuitButtonActionPerformed
         System.exit(0);
     }//GEN-LAST:event_QuitButtonActionPerformed
 
+    private void EloButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EloButtonActionPerformed
+        invokeFrame(new EloSystemFrame(), "Windows");
+    }//GEN-LAST:event_EloButtonActionPerformed
+
+    private void RatingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RatingButtonActionPerformed
+        invokeFrame(new RatingUI(), "Windows");
+    }//GEN-LAST:event_RatingButtonActionPerformed
+
+    private void invokeFrame(JFrame frame, String view) {
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                frame.setVisible(true);
+            }
+        });
+        this.dispose();
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -129,7 +165,7 @@ public class StarterForm extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }

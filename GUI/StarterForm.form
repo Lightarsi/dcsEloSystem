@@ -84,6 +84,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Starting Elo System"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EloButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="RatingButton">
       <Properties>
@@ -92,6 +95,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Rating"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RatingButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="InformationButton">
       <Properties>

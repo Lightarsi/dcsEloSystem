@@ -16,6 +16,15 @@
  */
 package GUI;
 
+import elosystem.EloSystem;
+import elosystem.Log;
+import elosystem.Player;
+import java.util.Collection;
+import java.util.HashMap;
+import javax.swing.DefaultListModel;
+import javax.swing.JList;
+import javax.swing.ListModel;
+
 /**
  *
  * @author Lightars
@@ -27,6 +36,21 @@ public class RatingUI extends javax.swing.JFrame {
      */
     public RatingUI() {
         initComponents();
+        formRating();
+    }
+
+    private void formRating() {
+        DefaultListModel<String> model = new DefaultListModel<>();
+        ratingList.setModel(model);
+        EloSystem elo = EloSystem.getEloSystem();
+        HashMap<String, Player> playersMap = elo.getPlayersMap();
+        Collection<Player> playersList = playersMap.values();
+        for (Player player : playersList) {
+            model.addElement(player.getName() + " " + player.getSurname() + " official rating: "
+                    + player.getOfficialRating() + " games total: " + String.valueOf(player.getGamesTotal()));
+            Log.log(player.getName() + " " + player.getSurname() + " official rating: "
+                   + player.getOfficialRating() + " games total: " + String.valueOf(player.getGamesTotal()));
+        }
     }
 
     /**
@@ -40,13 +64,12 @@ public class RatingUI extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
-        jButton1 = new javax.swing.JButton();
+        ratingList = new javax.swing.JList<>();
+        backButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(800, 500));
         setMinimumSize(new java.awt.Dimension(800, 500));
-        setPreferredSize(new java.awt.Dimension(800, 500));
         setResizable(false);
         setSize(new java.awt.Dimension(800, 500));
 
@@ -54,10 +77,16 @@ public class RatingUI extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Player's rating");
 
-        jScrollPane1.setViewportView(jList1);
+        ratingList.setFont(new java.awt.Font("Meiryo UI", 0, 14)); // NOI18N
+        jScrollPane1.setViewportView(ratingList);
 
-        jButton1.setFont(new java.awt.Font("Meiryo UI", 0, 14)); // NOI18N
-        jButton1.setText("Back");
+        backButton.setFont(new java.awt.Font("Meiryo UI", 0, 14)); // NOI18N
+        backButton.setText("Back");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -66,7 +95,7 @@ public class RatingUI extends javax.swing.JFrame {
             .addComponent(jScrollPane1)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(303, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(297, 297, 297))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE))
@@ -77,7 +106,7 @@ public class RatingUI extends javax.swing.JFrame {
                 .addGap(50, 50, 50)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(32, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -88,45 +117,20 @@ public class RatingUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RatingUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RatingUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RatingUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RatingUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RatingUI().setVisible(true);
+                new StarterForm().setVisible(true);
             }
         });
-    }
+        this.dispose();
+    }//GEN-LAST:event_backButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton backButton;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JList<String> ratingList;
     // End of variables declaration//GEN-END:variables
 }

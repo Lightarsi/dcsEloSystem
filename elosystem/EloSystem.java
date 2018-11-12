@@ -41,7 +41,7 @@ import java.util.logging.Logger;
 public class EloSystem implements Serializable {
 
     public static EloSystem eloSystem;
-    private FileLock lock;
+    private static FileLock lock = null;
 
     private final HashMap<String, Player> playersMap = new HashMap<>();
     private final ArrayList<Game> listOfGames = new ArrayList<>();
@@ -61,14 +61,18 @@ public class EloSystem implements Serializable {
     }
 
     private static EloSystem tryDeserializeEloSystem() {
+        //lockExternalFile();
         try {
             EloSystem elo = (EloSystem) deserializeObject(getEloSystemFile().getAbsolutePath());
+            //unlockExternalFile();
             return elo;
         } catch (IOException ex) {
             Log.log("There is no elo file");
+            //unlockExternalFile();
             return null;
         } catch (ClassNotFoundException ex) {
             Log.log("Serialization is broken");
+            //unlockExternalFile();
             return null;
         }
     }
@@ -115,13 +119,21 @@ public class EloSystem implements Serializable {
         Game game = new Game(player1, player2,
                 new Pair<>(scoreOfPlayer1, scoreOfPlayer2),
                 official);
-        listOfGames.add(game);
+        getListOfGames().add(game);
         player1.addGame(game);
         player2.addGame(game);
         // New rating should be calculated referenced to ratings BEFORE game,
         // thats why results are applied after.
         player1.applyResults();
         player2.applyResults();
+        //lockExternalFile();
+        try {
+            // we should serialize after that to save session.
+            serializeObject(getEloSystemFile().getAbsolutePath(), this);
+        } catch (IOException ex) {
+            Log.log("Path can't be added unfortunetely.");
+        }
+        //unlockExternalFile();
     }
 
     /**
@@ -131,7 +143,7 @@ public class EloSystem implements Serializable {
      * @return
      */
     private Player getPlayerByNick(String playersNick) {
-        return playersMap.get(playersNick);
+        return getPlayersMap().get(playersNick);
     }
 
     /**
@@ -146,11 +158,14 @@ public class EloSystem implements Serializable {
     }
 
     /**
-     * Method to create player if noone was found.
+     * Method to create player. If player exists, just return.
      */
-    private void createPlayer(String nick, String name, String surname) {
+    public void createPlayer(String nick, String name, String surname) {
+        if(getPlayersMap().get(nick) != null) {
+            return;
+        }
         Player player = new Player(nick, name, surname);
-        playersMap.put(nick, player);
+        getPlayersMap().put(nick, player);
     }
 
     /**
@@ -161,7 +176,7 @@ public class EloSystem implements Serializable {
      * @return
      */
     private Player getPlayerByNameAndSurname(String name, String surname) {
-        Collection<Player> values = playersMap.values();
+        Collection<Player> values = getPlayersMap().values();
         for (Player player : values) {
             if ((player.getName().equals(name)) && (player.getSurname().equals(surname))) {
                 return player;
@@ -176,7 +191,7 @@ public class EloSystem implements Serializable {
      *
      * @return
      */
-    private boolean lockExternalFile() {
+    private static boolean lockExternalFile() {
         if (lock != null) {
             Log.log("Lock is already used");
             return false;
@@ -197,7 +212,7 @@ public class EloSystem implements Serializable {
         return true;
     }
 
-    private boolean unlockExternalFile() {
+    private static boolean unlockExternalFile() {
         try {
             if (lock != null) {
                 lock.release();
@@ -227,6 +242,20 @@ public class EloSystem implements Serializable {
 
     public static File getEloSystemFile() {
         return new File("system.elo");
+    }
+
+    /**
+     * @return the playersMap
+     */
+    public HashMap<String, Player> getPlayersMap() {
+        return playersMap;
+    }
+
+    /**
+     * @return the listOfGames
+     */
+    public ArrayList<Game> getListOfGames() {
+        return listOfGames;
     }
 
 }
